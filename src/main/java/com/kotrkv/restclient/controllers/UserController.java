@@ -26,7 +26,7 @@ public class UserController {
         System.out.println("/admin");
         model.addAttribute("users", userService.findAll());
         model.addAttribute("roles", roleService.findAll());
-        return "/listUsers";
+        return "listUsers";
     }
 
     @GetMapping("/users")
