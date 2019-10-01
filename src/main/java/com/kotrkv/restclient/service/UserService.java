@@ -44,18 +44,9 @@ public class UserService {
 
     public void update(User user) {
         HttpHeaders httpHeaders = new HttpHeaders();
-        ObjectMapper objectMapper = new ObjectMapper();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        String serialize = null;
-        try {
-            serialize = objectMapper.writeValueAsString(user);
-            HttpEntity<String> httpEntity = new HttpEntity<>(serialize, httpHeaders);
-
-            restTemplate.exchange(URL_UPDATE_USER, HttpMethod.PUT, httpEntity, String.class);
-
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        HttpEntity<User> httpEntity = new HttpEntity<>(user, httpHeaders);
+        restTemplate.exchange(URL_UPDATE_USER, HttpMethod.PUT, httpEntity, User.class);
     }
 
     public void delete(Integer id) {

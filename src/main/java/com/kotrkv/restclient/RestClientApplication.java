@@ -14,6 +14,7 @@ public class RestClientApplication {
 
     @Bean
     public RestTemplate restTemplate(){
+
         return new RestTemplate();
     }
 }
